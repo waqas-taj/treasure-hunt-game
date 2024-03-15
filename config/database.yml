@@ -1,0 +1,21 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  username: postgres
+  password: postgres
+  port: 5432
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+development:
+  <<: *default
+  database: treasure_hunt_game_development
+
+test:
+  <<: *default
+  database: treasure_hunt_game_test
+
+production:
+  <<: *default
+  database: treasure_hunt_game_production
+  username: treasure_hunt_game
+  password: <%= ENV["TREASURE_HUNT_GAME_DATABASE_PASSWORD"] %>
